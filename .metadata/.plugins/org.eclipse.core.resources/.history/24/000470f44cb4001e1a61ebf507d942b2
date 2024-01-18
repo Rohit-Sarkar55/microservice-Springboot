@@ -1,0 +1,6 @@
+package com.deloitte.entity;
+
+public class Movie {
+	public int movieId;
+	public String name;
+}

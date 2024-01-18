@@ -1,0 +1,9 @@
+package com.deloitte.service;
+
+import com.deloitte.entity.Theatre;
+
+public interface TheatreService {
+	Theatre addTheatre(Theatre threatre);
+	
+	Theatre searchTheatreById(int theatreId);
+}

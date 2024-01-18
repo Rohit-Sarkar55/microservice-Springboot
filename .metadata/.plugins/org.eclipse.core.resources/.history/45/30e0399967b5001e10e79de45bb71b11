@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" isELIgnored="false"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>View Movie</title>
+</head>
+<body>
+	<c:set var="movie" value="${movie}"></c:set>
+	<h2><c:out value="${movie.name}"></c:out> </h2>
+	<br>
+	<h3> <c:out value="${movie.actorId}"></c:out>  </h3>
+	<c:set var="flag"></c:set>
+	
+	<button > </button>
+</body>
+</html>

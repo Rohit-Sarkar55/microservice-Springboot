@@ -1,0 +1,14 @@
+package com.deloitte.client;
+
+import java.util.List;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.deloitte.dto.Movie;
+
+@FeignClient(name = "MOVIE-SERVICE")
+public interface MovieFeign {
+	@GetMapping("theatres/{theatreId}/movies")
+	List<Movie> getAllMovies();
+}

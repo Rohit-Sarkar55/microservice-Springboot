@@ -1,0 +1,13 @@
+package com.deloitte.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.deloitte.dto.Actor;
+import com.deloitte.entity.Movie;
+
+
+@Repository
+public interface MovieRepository extends JpaRepository<Movie, Integer> {
+	Actor findActorByActorIdAndMovieId(int actorId);
+}

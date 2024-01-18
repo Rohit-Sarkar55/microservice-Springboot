@@ -1,0 +1,20 @@
+package com.deloitte.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.deloitte.service.TheatreService;
+
+@Controller
+@RequestMapping("/theatres")
+public class TheatreController {
+	
+	TheatreService theatreService;
+	
+	@RequestMapping("")
+	public ModelAndView viewAll() {
+		System.out.println("view all");
+		
+	}
+}

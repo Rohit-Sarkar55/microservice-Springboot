@@ -1,0 +1,27 @@
+package com.deloitte.entity;
+
+import java.util.List;
+
+public class Theatre {
+	private int theatreId;
+	private String name;
+	private List<Integer> listOfMovieIds;
+	public int getTheatreId() {
+		return theatreId;
+	}
+	public void setTheatreId(int theatreId) {
+		this.theatreId = theatreId;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public List<Integer> getListOfMovieIds() {
+		return listOfMovieIds;
+	}
+	public void setListOfMovieIds(List<Integer> listOfMovieIds) {
+		this.listOfMovieIds = listOfMovieIds;
+	}
+}

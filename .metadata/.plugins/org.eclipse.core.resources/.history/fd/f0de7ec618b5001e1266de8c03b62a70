@@ -1,0 +1,11 @@
+package com.deloitte.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+public class ActorController {
+	public ModelAndView home() {
+		ModelAndView mv = new ModelAndView();
+	}
+}

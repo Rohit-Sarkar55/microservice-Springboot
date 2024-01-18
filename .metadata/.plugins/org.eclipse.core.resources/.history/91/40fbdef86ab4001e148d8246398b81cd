@@ -1,0 +1,87 @@
+package com.deloitte.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.deloitte.client.MovieFeign;
+import com.deloitte.dto.Actor;
+import com.deloitte.dto.Movie;
+import com.deloitte.entity.Theatre;
+import com.deloitte.service.TheatreService;
+
+@RestController
+@RequestMapping("/theatres")
+public class TheatreController {
+	
+	@Autowired
+	TheatreService theatreService;
+	
+	@Autowired
+	MovieFeign movieFeign;
+	
+	@PostMapping("add") 
+	public Theatre addTheatre(@RequestBody Theatre theatre) {
+		return theatreService.addTheatre(theatre);
+	}
+	
+	@GetMapping("")
+	public List<Theatre> getAll(){
+		return theatreService.getAllTheatres();
+	}
+	
+	@GetMapping("{theatreId}")
+	public Theatre search(@PathVariable int theatreId) {
+		return theatreService.searchTheatreById(theatreId);
+	}
+	
+	@PutMapping("addmovie")
+	public Theatre addMovie(@RequestParam int theatreId , @RequestParam int movieId) {
+		Theatre theatre = theatreService.addMovieInThisTheatre(theatreId, movieId);
+		return theatreService.addTheatre(theatre);
+	}
+	
+	@GetMapping("{theatreId}/movies")
+	public List<Movie> getAllMoviesInThisTheatre(@PathVariable int theatreId)
+	{
+		
+		Theatre theatre = theatreService.searchTheatreById(theatreId);
+		List<Integer> moviesIds = theatre.getListOfMovieIds();
+		List<Movie>list = new ArrayList<>();
+		
+		for(Integer i: moviesIds) {
+			Movie movie = movieFeign.search(i);
+			list.add(movie);
+		}
+		return list;
+	}
+	
+	@GetMapping("findtheatresbymovieid")
+	public List<Theatre> getTheatresByMovieId(@RequestParam int movieId) {
+		List<Theatre> allTheatres = theatreService.getAllTheatres();
+		
+		List<Theatre> list = new ArrayList<>();
+		for(Theatre t: allTheatres) {
+			if(t.getListOfMovieIds().contains(movieId)) {
+				list.add(t);
+			}
+		}
+		return list;
+		
+	}
+	
+	@GetMapping("{theatreId}/findallactorsfromtheatre")
+	public List<Actor> findAllActorsByByTheatreId(@PathVariable int theatreId){
+		List<Movie> moviesInThisTheatre = getAllMoviesInThisTheatre(theatreId);
+	}
+}

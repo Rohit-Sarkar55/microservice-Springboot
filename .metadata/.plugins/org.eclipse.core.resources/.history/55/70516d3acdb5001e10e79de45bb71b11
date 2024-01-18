@@ -1,0 +1,48 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"
+    
+    isELIgnored="false"
+    
+    %>
+    
+     <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Movie Page</title>
+</head>
+<body>
+	<h1>Details of Theatres</h1>
+	<table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Address</th>
+            
+             <th> Show Movies </th>
+            <!--
+            <th>Password</th>
+            <th>Edit Profile</th>
+            <th>Delete</th> -->
+        </tr>
+ 
+        <c:forEach var="theatre" items="${theatres}">
+            <tr>
+                <td><c:out value="${theatre.theatreId}" /></td>
+                <td><c:out value="${theatre.name}" /></td>
+                <td><c:out value="${theatre.address}" /></td>
+             	<td> <a href="/theatres/${theatre.theatreId}"> View </a>  </td>
+            </tr>
+        </c:forEach>
+    </table>
+	
+	<form action="/theatres/add" method="post">
+		Name: <input name="name" type="text"> <br><br>
+		Address :<input name="address" type="text"> <br><br>
+		<input type="submit" value="Add Theatre"><br><br>
+		
+	</form>
+	
+</body>
+</html>

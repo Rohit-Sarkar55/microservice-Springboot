@@ -1,0 +1,22 @@
+package com.deloitte.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.deloitte.service.MovieService;
+
+@Controller
+@RequestMapping("/movies")
+public class MovieController {
+	
+	MovieService movieService;
+	
+	@GetMapping("")
+	public ModelAndView viewAll() {
+		System.out.println("all");
+		
+	}
+	
+}

@@ -1,0 +1,33 @@
+package com.deloitte.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.deloitte.entity.Theatre;
+import com.deloitte.repository.TheatreRepository;
+
+public class TheatreServiceImpl implements TheatreService {
+	
+	
+	@Autowired
+	TheatreRepository repository;
+	@Override
+	public Theatre addTheatre(Theatre threatre) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Theatre searchTheatreById(int theatreId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Theatre> getAllTheatres() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

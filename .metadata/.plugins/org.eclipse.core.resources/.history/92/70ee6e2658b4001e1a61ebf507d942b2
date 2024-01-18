@@ -1,0 +1,52 @@
+package com.deloitte.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.deloitte.dto.Movie;
+import com.deloitte.entity.Theatre;
+import com.deloitte.service.TheatreService;
+
+@RestController
+@RequestMapping("/theatres")
+public class TheatreController {
+	
+	@Autowired
+	TheatreService theatreService;
+	
+	@PostMapping("add") 
+	public Theatre addTheatre(@RequestBody Theatre theatre) {
+		return theatreService.addTheatre(theatre);
+	}
+	
+	@GetMapping("")
+	public List<Theatre> getAll(){
+		return theatreService.getAllTheatres();
+	}
+	
+	@GetMapping("{theatreId}")
+	public Theatre search(@PathVariable int theatreId) {
+		return theatreService.searchTheatreById(theatreId);
+	}
+	
+	@PutMapping("addmovie")
+	public Theatre addMovie(@RequestParam int theatreId , @RequestParam int movieId) {
+		Theatre theatre = theatreService.addMovieInThisTheatre(theatreId, movieId);
+		return theatreService.addTheatre(theatre);
+	}
+	
+	@GetMapping("{theatreId}/movies")
+	List<Movie> getAllMovies(){
+		List<Movie>list = new ArrayList<>();
+	}
+}

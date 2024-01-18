@@ -1,0 +1,6 @@
+package com.deloitte.entity;
+
+public interface Pair<Movie,Actor> {
+	A fisrt;
+	B second;
+}

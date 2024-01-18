@@ -1,0 +1,9 @@
+package com.deloitte.entity;
+
+import java.util.List;
+
+public class Theatre {
+	private int theatreId;
+	private String name;
+	private List<Integer> listOfSongIds;
+}

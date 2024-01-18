@@ -1,0 +1,6 @@
+package com.deloitte.entity;
+
+public class Actor {
+	private int actorId;
+	private String name;
+}

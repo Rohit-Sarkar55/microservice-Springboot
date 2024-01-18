@@ -1,0 +1,32 @@
+package com.deloitte.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.deloitte.repository.ActorRepository;
+
+@Controller
+@RequestMapping("/actors")
+public class ActorController {
+	
+	@Autowired
+	ActorRepository actorRepository;
+	
+	@RequestMapping("")
+	public ModelAndView all() {
+		System.out.println("All");
+		ModelAndView mv = new ModelAndView();
+	}
+	
+	
+	
+	public ModelAndView home() {
+		System.out.println("home");
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("index");
+		mv.addObject("msg", "welcome to my website");
+		return mv;
+	}
+}

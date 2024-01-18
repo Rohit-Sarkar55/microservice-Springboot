@@ -1,0 +1,30 @@
+package com.deloitte.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.deloitte.entity.Movie;
+import com.deloitte.service.MovieService;
+
+@RestController
+@RequestMapping("/movies")
+public class MovieController {
+	
+	@Autowired
+	MovieService movieService;
+	@PostMapping("add")
+	public Movie addMovie(@RequestBody Movie movie) {
+		return movieService.addMovie(movie);
+	}
+	
+	@GetMapping("")
+	public List<Movie> getAllMovie(){
+		return movieService.getAllMovies();
+	}
+}

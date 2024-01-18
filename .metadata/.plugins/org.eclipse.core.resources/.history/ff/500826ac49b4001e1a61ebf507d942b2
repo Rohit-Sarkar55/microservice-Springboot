@@ -1,0 +1,5 @@
+package com.deloitte.service;
+
+public interface ActorService {
+	Actor addActor(Actor actor);
+}

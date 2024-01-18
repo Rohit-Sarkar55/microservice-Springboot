@@ -1,0 +1,6 @@
+package com.deloitte.entity;
+
+public class Theatre {
+	private int theatreId;
+	private String name;
+}

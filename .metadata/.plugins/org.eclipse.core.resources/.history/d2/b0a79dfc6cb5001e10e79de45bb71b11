@@ -1,0 +1,48 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" isELIgnored="false"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>View Theatre</title>
+</head>
+<body>
+	<c:set var="theatre" value="${theatre}"></c:set>
+	<h2><c:out value="${theatre.name}"></c:out> </h2>
+	
+	<h4> <c:out value="${theatre.address}"></c:out>  </h4>
+	
+	<h2>Movies Running...</h2>
+	
+	<table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>ActorId</th>
+            <!--
+            <th>Password</th>
+            <th>Edit Profile</th>
+            <th>Delete</th> -->
+        </tr>
+ 
+        <c:forEach var="movie" items="${movies}">
+            <tr>
+                <td><c:out value="${movie.movieId}" /></td>
+                <td><c:out value="${movie.name}" /></td>
+                <td><c:out value="${movie.actorId}" /></td>
+             
+            </tr>
+        </c:forEach>
+    </table>
+    
+    <h4>Add New Movie</h4><br>
+    
+    	<form action="/theatres/${theatre.theatreId}/addMovie" method="post">
+			Name: <input name="name" type="text"> <br><br>
+			ActorId :<input name="actorId" type="number"> <br><br>
+		<input type="submit" value="Add Movie"><br><br>
+		
+	</form>
+</body>
+</html>

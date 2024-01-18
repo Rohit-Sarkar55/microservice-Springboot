@@ -1,0 +1,41 @@
+package com.deloitte.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.TableGenerator;
+
+public class Movie {
+	
+	
+	@Id
+	@Column(name = "actorId")
+	@TableGenerator(name = "act_seq",table="act_seq_tab", pkColumnName = "act_pk",
+	valueColumnName = "act-val", pkColumnValue = "act", 
+	initialValue = 1001, allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.TABLE , generator = "act_seq")
+	
+	public int movieId;
+	public String name;
+	public int actorId;
+	public int getMovieId() {
+		return movieId;
+	}
+	public void setMovieId(int movieId) {
+		this.movieId = movieId;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getActorId() {
+		return actorId;
+	}
+	public void setActorId(int actorId) {
+		this.actorId = actorId;
+	}
+	
+}
